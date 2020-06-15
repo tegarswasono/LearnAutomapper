@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LearnAutomapper.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20200615075328_initialTable")]
+    [Migration("20200615080330_initialTable")]
     partial class initialTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,10 +56,7 @@ namespace LearnAutomapper.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<Guid?>("CategoryId1")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Colour")
@@ -88,7 +85,7 @@ namespace LearnAutomapper.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId1");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -97,7 +94,9 @@ namespace LearnAutomapper.Migrations
                 {
                     b.HasOne("LearnAutomapper.EntityFramework.Entities.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId1");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

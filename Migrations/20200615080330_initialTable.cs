@@ -34,27 +34,26 @@ namespace LearnAutomapper.Migrations
                     CreatedBy = table.Column<int>(nullable: false),
                     UpdatedBy = table.Column<int>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Colour = table.Column<string>(nullable: true),
-                    Price = table.Column<string>(nullable: true),
-                    CategoryId1 = table.Column<Guid>(nullable: true)
+                    Price = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId1",
-                        column: x => x.CategoryId1,
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId1",
+                name: "IX_Products_CategoryId",
                 table: "Products",
-                column: "CategoryId1");
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
