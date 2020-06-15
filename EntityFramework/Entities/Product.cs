@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace LearnAutomapper.EntityFramework.Entities
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        [Key]
-        public int Id { set; get; }
         public int CategoryId { set; get; }
         public string Name { set; get; }
         public string Colour { set; get; }
