@@ -7,7 +7,11 @@ namespace LearnAutomapper.Models
 {
     public class ProductVM
     {
-
+        public Guid Id { set; get; }
+        public Guid CategoryId { set; get; }
+        public string Name { set; get; }
+        public string Colour { set; get; }
+        public string Price { set; get; }
     }
     public class CreateProductVM
     {
@@ -15,5 +19,19 @@ namespace LearnAutomapper.Models
         public string Name { set; get; }
         public string Colour { set; get; }
         public string Price { set; get; }
+    }
+    public class UpdateProductVM
+    {
+        public Guid CategoryId { set; get; }
+        public string Name { set; get; }
+        public string Colour { set; get; }
+        public string Price { set; get; }
+    }
+    public class UpdateProductVMFreshdeskStyle
+    {
+        public Nullable<Guid> CategoryId { set; get; }
+        public string? Name { set; get; }
+        public string? Colour { set; get; }
+        public string? Price { set; get; }
     }
 }
