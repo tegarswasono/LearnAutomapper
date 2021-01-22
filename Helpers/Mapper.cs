@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using LearnAutomapper.EntityFramework.Entities;
+using LearnAutomapper.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
