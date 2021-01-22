@@ -15,10 +15,6 @@ namespace LearnAutomapper.EntityFramework
         {
             _configuration = configuration;
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
-        }
 
         public DbSet<Category> Categories { set; get; }
         public DbSet<Product> Products { set; get; }
